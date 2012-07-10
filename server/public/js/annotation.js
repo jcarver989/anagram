@@ -45,6 +45,7 @@ $(document).ready(function() {
   $("#showAll").tooltip({
     placement: "bottom"
   }).on("click", function(e) {
+    e.preventDefault();
     $(".annotation-container.saved").toggleClass("visible");
     return $(this).toggleClass("active btn-primary");
   });

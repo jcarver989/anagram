@@ -51,6 +51,7 @@ set_user_name = (name) ->
 	
 $(document).ready () ->
   $("#showAll").tooltip({ placement: "bottom" }).on "click", (e) ->
+    e.preventDefault()
     $(".annotation-container.saved").toggleClass("visible")
     $(this).toggleClass("active btn-primary")
 
