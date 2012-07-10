@@ -1,4 +1,4 @@
-require './lib/s3' 
+require '../../lib/s3' 
 require File.expand_path(File.dirname(__FILE__) + '../../config/environment')
 
 class Screenshot
