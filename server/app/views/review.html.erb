@@ -205,7 +205,7 @@
       <% review.comments.each do |comment| %>
         append_saved_annotation(
           '<%= comment.reviewer %>',
-          '<%= comment.body %>',
+          '<%= comment.body.gsub("\n", "\\n") %>',
           '<%= comment.x %>',
           '<%= comment.y %>'
         );
