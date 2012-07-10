@@ -25,7 +25,7 @@ get '/reviews/:id' do
   review = Review.get(id)
   screenshot_url = review.screenshot.filename
 
-  view = File.expand_path(File.dirname(__FILE__) + "/app/views/review.html.erb" 
+  view = File.expand_path(File.dirname(__FILE__) + "/app/views/review.html.erb")
   template = ERB.new(File.read(view))
   template.result(binding)
 end
