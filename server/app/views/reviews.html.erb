@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="http://media.bizo.com/bizstrap/css/bizstrap-v2.0.3.css" rel="stylesheet">
+    <style>
+      body, html { 
+        height: 100%;
+        background: #eee;
+      }
+
+      .row-fluid .center {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span12 center">
+          <div class="page-header">
+            <h1>Reviews</h1>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% reviews.each do |review| %>
+                <tr>
+                  <td><%= review.title %></td>
+                  <td><a class="btn btn-primary" href="/reviews/<%=review.id%>">View</a></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -19,16 +19,26 @@ Proc.new do
 end.call
 
 
+def render_view(view)
+  view = File.expand_path(File.dirname(__FILE__) + "/app/views/#{view}.html.erb")
+  ERB.new(File.read(view))
+end
+
+
+get '/reviews' do
+  reviews = Review.all
+  render_view("reviews").result(binding)
+end
+
 # Review page, showing screenshot for leaving comments
 get '/reviews/:id' do
   id = params[:id]
   review = Review.get(id)
   screenshot_url = review.screenshot.filename
-
-  view = File.expand_path(File.dirname(__FILE__) + "/app/views/review.html.erb")
-  template = ERB.new(File.read(view))
-  template.result(binding)
+  render_view("review").result(binding)
 end
+
+
 
 # Creates a review, called by chrome extension
 post '/reviews/create'do 
