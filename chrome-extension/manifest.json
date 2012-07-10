@@ -1,0 +1,25 @@
+{
+  "name": "Design Review Tool",
+  "version": "1.0",
+  "update_url" : "",
+  "description": "Design Reviews!",
+  "update_url": "http://some-link-to-an-updates.xml-file",
+  "background_page": "background.html",
+
+  "permissions":  [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+
+  "icons": { 
+    "128" : "icons/logo_128.png", 
+    "48" : "icons/logo_48.png", 
+    "16" : "icons/logo_16.png"
+  },
+
+  "browser_action": {
+    "default_icon"  : "icons/logo_16.png", 
+    "default_title" : "Design Review"
+  }
+}

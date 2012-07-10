@@ -1,0 +1,74 @@
+@font-face {
+        font-family: 'FoundationIconsGeneral';
+        src: url('../fonts/foundation-icons-general.eot');
+        src: url('../fonts/foundation-icons-general.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/foundation-icons-general.woff') format('woff'),
+        url('../fonts/foundation-icons-general.ttf') format('truetype'),
+        url('../fonts/foundation-icons-general.svg#FoundationIcons') format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .glyph { 
+        cursor: default; 
+        font-size: 80px; 
+        text-align: center;
+        line-height: 1; 
+        color: #aaa;
+      }
+
+      .glyph.general { font-family: 'FoundationIconsGeneral'; }
+
+
+      .circle-button {
+        width: 120px;
+        padding: 10px;
+        text-align: center;
+        height: 120px;
+        border-radius: 100%;
+        border: 8px solid #ccc;
+        position: relative;
+        margin: 0 auto;
+        display: block;
+      }
+
+
+      .circle-button:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(50,50,50,0.3)));
+        box-shadow: inset 0 0 12px rgba(0,0,0,.3);
+        border-color: #333;
+        text-decoration: none;
+        cursor: pointer;
+
+        transition: border-color 0.5s, background 0.5s;
+        -webkit-transition: border-color 0.5s, background 0.5s; /* Safari and Chrome */
+      }
+
+      .circle-button:active {
+        box-shadow: inset 0 5px 30px rgba(0,0,0,.6);
+      }
+
+      .circle-button:hover .glyph {
+        color: #333;
+        cursor: pointer;
+
+        transition: color 0.5s;
+        -webkit-transition: color 0.5s;
+      }
+
+
+      .modal .modal-body {
+        height: 250px;
+        max-height: 1000px;
+        margin-top: 40px;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+     .modal-body h3 {
+        margin-top: 15px;
+        color: #555;
+      }
+

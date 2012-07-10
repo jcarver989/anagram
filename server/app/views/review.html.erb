@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="http://media.bizo.com/bizstrap/css/bizstrap-v2.0.3.css" rel="stylesheet">
+    <style>
+      body, html { 
+        height: 100%;
+        background: #eee;
+      }
+
+
+      textarea {
+        display: block; 
+        height: 100px;
+      }
+
+      .relative{
+        position: relative; 
+      }
+
+
+      .annotation-container {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        padding: 20px 20px 40px 20px;
+        background: -webkit-linear-gradient(top, #eee 0%, #ddd 100%);
+        border-radius: 3px;
+        box-shadow: 0 3px 5px rgba(0,0,0,.6);
+      }
+
+      .annotation-container .btn {
+        margin-right: 10px;
+      }
+
+      .annotation-container .controls {
+        position: absolute;
+        right: 20px;
+      }
+
+
+      .annotation-container .btn:last-child {
+        margin-right: 0;
+      }
+
+      .annotation {
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: #00a5dc;
+        border: 3px solid #fff;
+        box-shadow: 0 1px 5px rgba(0,0,0,.4);
+        border-radius: 100%;
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        z-index: 2;
+      }
+
+      .annotation-container.saved {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+      }
+
+      .annotation-container.saved .content {
+        opacity: 0;
+        left: -99999em;
+        -webkit-transition: opacity 0.25s;
+        box-shadow: 0 2px 3px rgba(0,0,0,.4);
+      }
+
+      .annotation-container.saved:hover .content, .annotation-container.saved.visible .content {
+        opacity: 1;
+        background: -webkit-linear-gradient(top, #fff 0%, #d1e6eb 100%);
+        border: 3px solid #1b3d46;
+        padding: 15px;
+        width: 180px;
+        position: absolute;
+        top: 25px;
+        left: -90px;
+        border-radius: 6px;
+        color: #333;
+        z-index: 999;
+        -webkit-transition: opacity 0.25s, background-color 0.25s;
+      }
+
+      .annotation-container.saved .content h4 {
+        margin-bottom: 5px;
+      }
+
+      .annotation-container.saved .content .btn {
+        display: none;
+      }
+
+      .arrow-up {
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #1b3d46;
+      }
+
+
+      .annotation-container.saved .arrow-up {
+        position: absolute;
+        top: -8px;
+        left: 87px;
+      }
+
+      .annotate-overlay {
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 998;
+      }
+
+      .topbar {
+        max-width: 800px;
+        height: 30px;
+        margin: 15px auto 10px;
+        position: relative;
+        z-index: 2;
+        background: #ccc;
+        border-radius: 5px;
+        border-bottom: 1px solid rgba(0,0,0,.4);
+        border-top: 1px solid #fff;
+        box-shadow: 0 3px 2px rgba(0,0,0,.2), inset 0 -20px 5px rgba(0,0,0,.05);
+        background: -webkit-linear-gradient(top, #eee 0%, #ccc 100%);
+        padding: 5px 10px;
+      }
+
+      .topbar h3 {
+        text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        float: left;
+        margin-right: 20px;
+      }
+
+      .topbar .controls {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+
+      #review-content {
+        position: relative;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      #review-content img {
+        display: block; 
+        margin: 0 auto;
+        border: 6px solid #fff;
+        box-shadow: 0 3px 10px rgba(0,0,0,.4);
+      }
+
+      .middle {
+        width: 300px;
+        margin: 0 auto;
+      }
+
+
+      #set-user input {
+        -webkit-transition: background 1s;
+      }
+
+      .user-set {
+        background: #333;
+        color: #fff;
+        -webkit-transition: background 1s;
+      }
+
+    </style>      
+  </head>
+
+  <body>
+
+    <div class="topbar">
+        <h3><%= review.title %></h3>
+
+        <form id="set-user" class="form-inline middle">
+          <label><i class="icon-user"></i></label>
+          <input type="text" class="input-medium" placeholder="Name">
+          <button type="submit" class="btn btn-primary">Set</button>
+        </form>
+
+        <div class="controls">
+          <div class="btn-toolbar" style="margin: 0;">
+              <a href="#" id="showAll" rel="tooltip" title="toggle comments" class="btn btn-small"><i class="icon-comment"></i></a>
+          </div>
+        </div>
+    </div>
+
+    <div id="review-content">
+      <img src="<%= screenshot_url %>" />
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://media.bizo.com/bizstrap/js/bootstrap.min.js"></script>
+    <script src="/js/annotation.js"></script>
+
+
+    <script>
+      <% review.comments.each do |comment| %>
+        append_saved_annotation(
+          '<%= comment.reviewer %>',
+          '<%= comment.body %>',
+          '<%= comment.x %>',
+          '<%= comment.y %>'
+        );
+      <% end %>
+    </script>
+
+  </body>
+</html>
