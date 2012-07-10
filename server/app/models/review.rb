@@ -1,3 +1,5 @@
+require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
+
 class Review 
   include DataMapper::Resource
 
@@ -10,6 +12,6 @@ class Review
   has n, :comments
 
   def get_link
-    "http://localhost:4567/reviews/#{@id}"
+    "#{HOST}/reviews/#{@id}"
   end
 end
