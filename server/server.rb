@@ -26,7 +26,7 @@ end
 
 
 get '/reviews' do
-  reviews = Review.all
+  reviews = Review.all(:order => [ :created_at.desc ])
   render_view("reviews").result(binding)
 end
 

@@ -24,6 +24,7 @@
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
+                <th>Created</th>
                 <th>Title</th>
                 <th>Actions</th>
               </tr>
@@ -31,6 +32,7 @@
             <tbody>
               <% reviews.each do |review| %>
                 <tr>
+                  <td><%= review.created_at.strftime("%m-%d-%y") %></td>
                   <td><%= review.title %></td>
                   <td><a class="btn btn-primary" href="/reviews/<%=review.id%>">View</a></td>
                 </tr>
