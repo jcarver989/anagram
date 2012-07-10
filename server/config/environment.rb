@@ -7,7 +7,7 @@ if RACK_ENV == "development" || RACK_ENV == :development
 
 elsif RACK_ENV == "production" || RACK_ENV == :production
   HOST      = "http://herokuappname.com"
-  DB_URL    =  ENV['DATABASE_URL'] || ENV["HEROKU_POSTGRESQL_ORANGE_URL" || raise("DATABASE_URL IS NOT DEFINED!")
+  DB_URL    =  ENV['DATABASE_URL'] || ENV["HEROKU_POSTGRESQL_ORANGE_URL"] || raise("DATABASE_URL IS NOT DEFINED!")
   S3_STORE  =  "com-bizo-public/anagram/screenshots"
 
 else
