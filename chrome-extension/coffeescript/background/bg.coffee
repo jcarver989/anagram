@@ -10,8 +10,9 @@ delegateRequest = (request, callback) ->
 
 saveReview = (review, callback) ->
   console.log("making screenshot")
+  url = "http://electric-river-8890.herokuapp.com"
   xhr = new XMLHttpRequest()
-  xhr.open("POST", "http://localhost:4567/reviews/create", true)
+  xhr.open("POST", "#{url}/reviews/create", true)
   xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
   xhr.onreadystatechange = () -> callback(xhr.responseText) if xhr.readyState == 4 
   xhr.send(review)

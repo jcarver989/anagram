@@ -5,10 +5,10 @@ require 'sinatra'
 require 'data_mapper'
 require 'base64'
 
-require './config/environment'
-require './app/models/screenshot'
-require './app/models/review'
-require './app/models/comment'
+require File.expand_path(File.dirname(__FILE__) + '/config/environment')
+require File.expand_path(File.dirname(__FILE__) + '/app/models/screenshot')
+require File.expand_path(File.dirname(__FILE__) + '/app/models/review')
+require File.expand_path(File.dirname(__FILE__) + '/app/models/comment')
 
 # Lazy man's init
 Proc.new do 
