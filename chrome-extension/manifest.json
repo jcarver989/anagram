@@ -1,9 +1,9 @@
 {
-  "name": "Design Review Tool",
+  "name": "Anagram - Design Review Tool",
   "version": "1.0",
   "update_url" : "",
   "description": "Design Reviews!",
-  "update_url": "http://some-link-to-an-updates.xml-file",
+  "update_url": "http://media.bizo.com/chrome-extensions/anagram-design-review-tool/updates.xml",
   "background_page": "background.html",
 
   "permissions":  [
