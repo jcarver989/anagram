@@ -44,7 +44,8 @@ end
 post '/reviews/create'do 
   review = Review.create!(
     :title      => params["title"], 
-    :reviewers  => params["reviewers"]
+    :reviewers  => params["reviewers"],
+    :created_at => Time.now
   )
 
   screenshot = Screenshot.new(:review => review)
