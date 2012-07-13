@@ -8,8 +8,8 @@ class Review
   property :reviewers,  String    
   property :created_at, DateTime
 
-  has 1, :screenshot
-  has n, :comments
+  has 1, :screenshot, :constraint => :destroy
+  has n, :comments,   :constraint => :destroy
 
   def get_link
     "#{HOST}/reviews/#{@id}"

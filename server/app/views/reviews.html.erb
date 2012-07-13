@@ -12,12 +12,52 @@
         margin: 0 auto;
       }
     </style>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://media.bizo.com/bizstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+          $(".delete").on("click", function(e) {
+            e.preventDefault();
+            var link = $("#deleteButton")
+            link.attr("href", link.attr("href") + $(this).attr("data-reviewid"));
+            $("#modal").modal('show');
+            return false;
+          });
+      });
+    </script>
+
   </head>
 
   <body>
+
+    <div class="modal hide" id="modal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Are you sure you want to kill this review? </h3>
+      </div>
+      
+      <div class="modal-body">
+        <p>It might have small children living in S3 or pet comments.</p>
+      </div>
+      <div class="modal-footer">
+        <a id="deleteButton" href="/reviews/destroy/" class="btn btn-danger">Yes I'm evil</a>
+      </div>
+    </div>
+
+
     <div class="container">
       <div class="row">
         <div class="span12 center">
+          <% if show_delete_notification == true %>
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>Review killed...</strong> I hope your happy with yourself.
+            </div>
+          <% end %>
+
           <div class="page-header">
             <h1>Reviews</h1>
           </div>
@@ -34,7 +74,10 @@
                 <tr>
                   <td><%= review.id  %></td>
                   <td><%= review.title %></td>
-                  <td><a class="btn btn-primary" href="/reviews/<%=review.id%>">View</a></td>
+                  <td>
+                    <a class="btn btn-primary" href="/reviews/<%=review.id%>">View</a>
+                    <a class="btn btn-danger delete" data-reviewid="<%= review.id%>" href="#">Delete</a>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

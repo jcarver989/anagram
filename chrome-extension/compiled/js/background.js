@@ -23,7 +23,7 @@ delegateRequest = function(request, callback) {
 saveReview = function(review, callback) {
   var url, xhr;
   console.log("making screenshot");
-  url = "http://electric-river-8890.herokuapp.com";
+  url = "http://localhost:4567";
   xhr = new XMLHttpRequest();
   xhr.open("POST", "" + url + "/reviews/create", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

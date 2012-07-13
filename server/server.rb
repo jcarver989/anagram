@@ -26,6 +26,7 @@ end
 
 
 get '/reviews' do
+  show_delete_notification = (params["show_delete_notification"] == "true") ? true : false 
   reviews = Review.all(:order => [ :id.desc ])
   render_view("reviews").result(binding)
 end
@@ -36,6 +37,18 @@ get '/reviews/:id' do
   review = Review.get(id)
   screenshot_url = review.screenshot.filename
   render_view("review").result(binding)
+end
+
+
+get '/reviews/destroy/:id' do
+  id = params[:id]
+  review = Review.get(id)
+  unless review.nil?
+    review.destroy
+    redirect "/reviews?show_delete_notification=true"
+  else
+    "That's not a review id that exists"
+  end
 end
 
 
